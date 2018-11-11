@@ -8,7 +8,7 @@ class MentorController extends Component {
 
   state = {
     course: [],
-    isLoading: false
+    isLoading: false,
   }
 
   fetchMentor = async () => {
@@ -20,7 +20,20 @@ class MentorController extends Component {
 
       this.setState({ course: mentor, isLoading: false });
     });
+  }
 
+  uploadPaymentProve = async (mentor) => {
+    const { currentUser } = firebase.auth();
+    const orderStatus = false;
+    this.setState({ isLoading: true });
+
+    firebase.database().ref(`/user/${currentUser.uid}/mentors`).push(mentor)
+      .then(() => {
+        this.setState({ isLoading: false });
+        orderStatus = true;
+      });
+
+    return orderStatus;
   }
 
   componentWillUnmount() {
@@ -33,7 +46,9 @@ class MentorController extends Component {
         value={{
           fetchMentor: this.fetchMentor,
           course: this.state.course,
-          isLoading: this.state.isLoading
+          isLoading: this.state.isLoading,
+          uploadPaymentProve: this.uploadPaymentProve,
+          paymentStatus: this.state.paymentStatus
         }}
       >
         {this.props.children}

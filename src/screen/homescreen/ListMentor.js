@@ -5,9 +5,9 @@ import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-na
 
 export default class ListMentor extends Component {
   renderCardMentor(mentor) {
-    return mentor.map((mentor)=> {
+    return mentor.map((mentor, index)=> {
       return (
-        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Mentor', { mentor })} activeOpacity={0.6} style={styles.CardMentor}>
+        <TouchableOpacity key={index} onPress={()=>this.props.navigation.navigate('Mentor', { mentor })} activeOpacity={0.6} style={styles.CardMentor}>
           <Avatar
             source={{ uri: mentor.photo }}
             rounded
@@ -35,6 +35,9 @@ export default class ListMentor extends Component {
     const { mentor } = this.props.navigation.state.params;
     return(
       <View style={styles.container}>
+        <View style={styles.topBar}>
+          <Text style={styles.topBarText}>Daftar Mentor </Text>
+        </View>
         {this.renderCardMentor(mentor)}
       </View>
     )
@@ -58,5 +61,17 @@ const styles = StyleSheet.create({
   name: {
     fontSize: hp('2.5%'),
     fontFamily: 'OpenSans-Bold'
-  }
+  },
+  topBar: {
+    height: hp('8%'),
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10
+  },
+  topBarText: {
+    fontFamily: 'OpenSans-Regular',
+    fontSize: hp('2.5%'),
+  },
 })

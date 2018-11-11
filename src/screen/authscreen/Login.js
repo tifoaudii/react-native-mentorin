@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import { FormInput, FormLabel, Icon } from 'react-native-elements';
 import { AuthConsumer, AuthContext, AuthController } from '../../controller/AuthController';
 import firebase from 'firebase';
@@ -51,7 +51,7 @@ class Login extends Component {
     const { email,password } = this.state;
 
     return (
-      <View style={container}>
+      <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={container}>
         <Text style={brand}>MENTORIN</Text>
         <View style={form}>
           <FormLabel labelStyle={{ color: '#2980B9'}}>Email</FormLabel>
@@ -94,7 +94,7 @@ class Login extends Component {
               <Text style={registerBtnText}>Belum punya akun? daftar disini!</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     )
   };
 }

@@ -9,8 +9,9 @@ import Splash from '../screen/splashscreen/Splash';
 import Home from '../screen/homescreen/Home';
 import ListMentor from '../screen/homescreen/ListMentor';
 import Mentor from '../screen/homescreen/Mentor';
+import Payment from '../screen/homescreen/Payment';
 import Order from '../screen/orderscreen/Order';
-import Chat from '../screen/chatscreen/Chat';
+import EditProfile from '../screen/profilescreen/EditProfile';
 import Profile from '../screen/profilescreen/Profile';
 
 const AuthStack = createStackNavigator(
@@ -21,28 +22,15 @@ const AuthStack = createStackNavigator(
 );
 
 const HomeStack = createStackNavigator(
-  { Home,ListMentor,Mentor },
+  { Home,ListMentor,Mentor,Payment },
   {
     headerMode: 'none'
   }
 );
 
-const OrderStack = createStackNavigator(
-  { Order },
-  {
-    headerMode: 'none'
-  }
-);
-
-const ChatStack = createStackNavigator(
-  { Chat },
-  {
-    headerMode: 'none'
-  }
-);
 
 const ProfileStack = createStackNavigator(
-  { Profile },
+  { Profile, EditProfile, Order },
   {
     headerMode: 'none'
   }
@@ -59,20 +47,6 @@ const MenuTab = createBottomTabNavigator(
             name='home'
             size={25}
             color={tintColor}
-          />
-        ),
-      }
-    }, 
-    Order: { 
-      screen: OrderStack,
-      navigationOptions: {
-        tabBarLabel: 'Order',
-        tabBarIcon: ({ tintColor })=>(
-          <Icon 
-            name='add-shopping-cart'
-            size={25}
-            color={tintColor}
-            type='materialicons'
           />
         ),
       }
@@ -96,11 +70,11 @@ const MenuTab = createBottomTabNavigator(
       activeTintColor: '#3498DB',
       scrollEnabled: true,
       style: {
-        height: 50,
-        backgroundColor: '#white'
+        height: 52,
+        backgroundColor: 'white',
       },
       labelStyle: {
-        fontSize: 12,
+        fontSize: 8,
       },
     },   
   }

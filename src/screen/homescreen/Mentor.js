@@ -61,7 +61,7 @@ export default class Mentor extends Component {
           <Text style={profileText}>Pesan Mentor</Text>
           <Text style={descriptionText}>Cocok dengan Mentor ini ? Tekan tombol di bawah ini untuk memesan pelatihan dengan Mentor ini</Text>
         </View>
-        <TouchableOpacity activeOpacity={0.6} style={orderBtn}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment', { mentor })} activeOpacity={0.6} style={orderBtn}>
           <Text style={orderBtnText}>Pesan Mentor</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginBottom: hp('2%')
   },
   profileText: {
-    fontSize: hp('3%'),
+    fontSize: hp('2.5%'),
     fontFamily: 'OpenSans-SemiBold',
     color: 'black',
     marginBottom: hp('1%')
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   descriptionText: {
-    fontSize: hp('2.5%'),
-    fontFamily: 'OpenSans-Light'
+    fontSize: hp('2%'),
+    fontFamily: 'OpenSans-Regular'
   },
   orderBtn: {
     marginVertical: hp('3.5%'),
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   orderBtnText: {
-    fontSize: hp('2.5%'),
+    fontSize: hp('2%'),
     color: 'white',
     textAlign: 'center'
   }
