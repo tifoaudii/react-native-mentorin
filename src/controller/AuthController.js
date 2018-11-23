@@ -61,8 +61,6 @@ class AuthController extends Component {
 		}
 	}
 
-
-
 	login = async (email, password) => {
 		this.setState({
 			isLoading: true,
@@ -146,9 +144,6 @@ class AuthController extends Component {
       })
 		});
 	}
-
-	
-	
 
 	handlePictureChange = () => {
 		ImagePicker.showImagePicker((response) => {
